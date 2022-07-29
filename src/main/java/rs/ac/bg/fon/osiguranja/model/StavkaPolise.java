@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "stavkapolise")
-public class StavkaPolise implements Entitet{
+public class StavkaPolise implements Entitet, Serializable{
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PolisaID", referencedColumnName = "PolisaID")
