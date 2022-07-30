@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -38,7 +39,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 @Table(name = "polisa")
-public class Polisa implements Entitet {
+public class Polisa implements Entitet, Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "PolisaID")

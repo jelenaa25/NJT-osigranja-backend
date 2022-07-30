@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +34,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 @Table(name = "klijent")
-public class Klijent implements Entitet{
+public class Klijent implements Entitet, Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "KlijentID")

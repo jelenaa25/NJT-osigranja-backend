@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 @Table(name = "predmetosiguranja")
-public class PredmetOsiguranja implements Entitet{
+public class PredmetOsiguranja implements Entitet, Serializable{
     @Id
     @Column(name = "PredmetID")
     private int predmetID;
