@@ -6,8 +6,10 @@
 package rs.ac.bg.fon.osiguranja.service;
 
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import rs.ac.bg.fon.osiguranja.model.Polisa;
 import rs.ac.bg.fon.osiguranja.repository.PolisaRepository;
 
@@ -16,19 +18,27 @@ import rs.ac.bg.fon.osiguranja.repository.PolisaRepository;
  * @author Korisnik
  */
 @Service
+@Transactional
+@AllArgsConstructor
 public class PolisaService {
     @Autowired
     private PolisaRepository polisaRepository;
 
     public Polisa kreirajPolisu(Polisa p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        //validacija TODO
+        
+        return polisaRepository.save(p);
+
     }
 
     public List<Polisa> vratiSvePolise() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return polisaRepository.findAll();
     }
 
-    public boolean obrisiPolisu(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean obrisiPolisu(int id) throws Exception{
+
+           polisaRepository.deleteById(id);
+           return true;
     }
 }
