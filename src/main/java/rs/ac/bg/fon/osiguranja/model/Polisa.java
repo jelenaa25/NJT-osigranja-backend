@@ -8,6 +8,7 @@ package rs.ac.bg.fon.osiguranja.model;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -54,6 +55,6 @@ public class Polisa implements Entitet {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AgentID", referencedColumnName = "AgentID")
     private Agent agentOsiguranja;
-    @OneToMany(mappedBy = "polisa", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "polisa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<StavkaPolise> stavkePolise;
 }
