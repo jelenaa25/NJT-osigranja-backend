@@ -19,7 +19,6 @@ import rs.ac.bg.fon.osiguranja.repository.PolisaRepository;
  */
 @Service
 @Transactional
-@AllArgsConstructor
 public class PolisaService {
     @Autowired
     private PolisaRepository polisaRepository;
