@@ -16,12 +16,24 @@ public class AgentMapper implements GenericMapper<AgentDto, Agent>{
 
     @Override
     public Agent toEntity(AgentDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Agent a = new Agent();
+        a.setAgentID(dto.getAgentID());
+        a.setIme(dto.getIme());
+        a.setPrezime(dto.getPrezime());
+        a.setStrucnaSprema(dto.getStrucnaSprema());
+        a.setUsername(dto.getUsername());
+        return a;
     }
 
     @Override
     public AgentDto toDto(Agent entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        AgentDto a = new AgentDto();
+        a.setAgentID(entity.getAgentID());
+        a.setIme(entity.getIme());
+        a.setPrezime(entity.getPrezime());
+        a.setStrucnaSprema(entity.getStrucnaSprema());
+        a.setUsername(entity.getUsername());
+        return a;
     }
     
 }
