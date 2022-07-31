@@ -18,12 +18,30 @@ public class PolisaMapper implements GenericMapper<PolisaDto, Polisa>{
 
     @Override
     public Polisa toEntity(PolisaDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Polisa p = new Polisa();
+        p.setDatumDO(dto.getDatumDO());
+        p.setDatumOD(dto.getDatumDO());
+        p.setGradjevinskaVrednost(dto.getGradjevinskaVrednost());
+        p.setPolisaID(dto.getPolisaID());
+        p.setUkupnaPremija(dto.getUkupnaPremija());
+        p.setVrednostPoKvM(dto.getVrednostPoKvM());
+        p.setPovrsinaStana(dto.getPovrsinaStana());
+        return p;
     }
 
     @Override
     public PolisaDto toDto(Polisa entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PolisaDto p = new PolisaDto();
+        p.setAgentOsiguranjaID(entity.getAgentOsiguranja().getAgentID());
+        p.setDatumDO(entity.getDatumDO());
+        p.setDatumOD(entity.getDatumOD());
+        p.setGradjevinskaVrednost(entity.getGradjevinskaVrednost());
+        p.setKlijentID(entity.getKlijent().getId());
+        p.setPolisaID(entity.getPolisaID());
+        p.setPovrsinaStana(entity.getPovrsinaStana());
+        p.setUkupnaPremija(entity.getUkupnaPremija());
+        p.setVrednostPoKvM(entity.getVrednostPoKvM());
+        return p;
     }
     
 }

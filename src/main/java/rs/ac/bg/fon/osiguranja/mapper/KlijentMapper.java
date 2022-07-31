@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package rs.ac.bg.fon.osiguranja.mapper;
-
 import rs.ac.bg.fon.osiguranja.dto.KlijentDto;
 import rs.ac.bg.fon.osiguranja.model.Klijent;
 
@@ -12,16 +11,25 @@ import rs.ac.bg.fon.osiguranja.model.Klijent;
  *
  * @author Korisnik
  */
-public class KlijentMapper implements GenericMapper<KlijentDto, Klijent>{
 
+public class KlijentMapper implements GenericMapper<KlijentDto, Klijent>{
+//dodaj mestoRepositoryyy
     @Override
     public Klijent toEntity(KlijentDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Klijent k = new Klijent();
+        k.setId(dto.getId());
+        k.setImePrezime(dto.getImePrezime());
+        //k.setMesto();
+        return k;
     }
 
     @Override
     public KlijentDto toDto(Klijent entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        KlijentDto k = new KlijentDto();
+        k.setId(entity.getId());
+        k.setImePrezime(entity.getImePrezime());
+        k.setMesto(entity.getMesto().getPTT());
+        return k;
     }
     
 }

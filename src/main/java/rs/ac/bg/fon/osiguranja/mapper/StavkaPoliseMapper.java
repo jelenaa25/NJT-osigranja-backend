@@ -20,12 +20,25 @@ public class StavkaPoliseMapper implements GenericMapper<StavkaPoliseDto, Stavka
     
     @Override
     public StavkaPolise toEntity(StavkaPoliseDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        StavkaPolise st = new StavkaPolise();
+        st.setPremija(dto.getPremija());
+        st.setProcenatAmortizacije(dto.getProcenatAmortizacije());
+        st.setRb(dto.getRb());
+        st.setSumaOsiguranja(dto.getSumaOsiguranja());
+        return st;
     }
 
     @Override
     public StavkaPoliseDto toDto(StavkaPolise entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        StavkaPoliseDto std = new StavkaPoliseDto();
+        std.setPokriceID(entity.getPokrice().getPokriceID());
+        std.setPolisaID(entity.getPolisa().getPolisaID());
+        std.setPredmetOsiguranjaID(entity.getPredmetOsiguranja().getPredmetID());
+        std.setPremija(entity.getPremija());
+        std.setProcenatAmortizacije(entity.getProcenatAmortizacije());
+        std.setRb(entity.getRb());
+        std.setSumaOsiguranja(entity.getSumaOsiguranja());
+        return std;
     }
     
 }

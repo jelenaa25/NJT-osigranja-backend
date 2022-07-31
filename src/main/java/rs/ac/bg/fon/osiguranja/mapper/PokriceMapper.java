@@ -16,12 +16,20 @@ public class PokriceMapper implements GenericMapper<PokriceDto, Pokrice>{
 
     @Override
     public Pokrice toEntity(PokriceDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Pokrice p = new Pokrice();
+        p.setNapomena(dto.getNapomena());
+        p.setNaziv(dto.getNaziv());
+        p.setPokriceID(dto.getPokriceID());
+        return p;
     }
 
     @Override
     public PokriceDto toDto(Pokrice entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PokriceDto p = new PokriceDto();
+        p.setNapomena(entity.getNapomena());
+        p.setNaziv(entity.getNaziv());
+        p.setPokriceID(entity.getPokriceID());
+        return p;
     }
     
 }

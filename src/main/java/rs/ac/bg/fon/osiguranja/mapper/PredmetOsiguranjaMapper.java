@@ -16,12 +16,20 @@ public class PredmetOsiguranjaMapper implements GenericMapper<PredmetOsiguranjaD
 
     @Override
     public PredmetOsiguranja toEntity(PredmetOsiguranjaDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PredmetOsiguranja  p = new PredmetOsiguranja();
+        p.setNapomena(dto.getNapomena());
+        p.setNaziv(dto.getNaziv());
+        p.setPredmetID(dto.getPredmetID());
+        return p;
     }
 
     @Override
     public PredmetOsiguranjaDto toDto(PredmetOsiguranja entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PredmetOsiguranjaDto p = new PredmetOsiguranjaDto();
+        p.setNapomena(entity.getNapomena());
+        p.setNaziv(entity.getNaziv());
+        p.setPredmetID(entity.getPredmetID());
+        return p;
     }
     
 }

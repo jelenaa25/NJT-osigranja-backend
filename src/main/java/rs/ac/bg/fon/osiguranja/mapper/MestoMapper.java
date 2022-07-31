@@ -16,12 +16,18 @@ public class MestoMapper implements GenericMapper<MestoDto, Mesto>{
 
     @Override
     public Mesto toEntity(MestoDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Mesto m = new Mesto();
+        m.setNaziv(dto.getNaziv());
+        m.setPTT(dto.getPTT());
+        return m;
     }
 
     @Override
     public MestoDto toDto(Mesto entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        MestoDto m = new MestoDto();
+        m.setNaziv(entity.getNaziv());
+        m.setPTT(entity.getPTT());
+        return m;
     }
     
 }
