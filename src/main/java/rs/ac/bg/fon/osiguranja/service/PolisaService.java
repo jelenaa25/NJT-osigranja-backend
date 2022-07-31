@@ -16,7 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 import rs.ac.bg.fon.osiguranja.dto.PolisaDto;
 import rs.ac.bg.fon.osiguranja.mapper.PolisaMapper;
 import rs.ac.bg.fon.osiguranja.model.Polisa;
+import rs.ac.bg.fon.osiguranja.model.StavkaPolise;
 import rs.ac.bg.fon.osiguranja.repository.PolisaRepository;
+import rs.ac.bg.fon.osiguranja.repository.StavkaPoliseRepository;
 
 /**
  *
@@ -28,10 +30,12 @@ public class PolisaService {
    
     private PolisaRepository polisaRepository;
     private PolisaMapper polisaMapper;
+    private StavkaPoliseRepository stavkaPoliseRepository;
 
-    public PolisaService(PolisaRepository polisaRepository, PolisaMapper polisaMapper) {
+    public PolisaService(PolisaRepository polisaRepository, PolisaMapper polisaMapper, StavkaPoliseRepository stavkaPoliseRepository) {
         this.polisaRepository = polisaRepository;
         this.polisaMapper = polisaMapper;
+        this.stavkaPoliseRepository = stavkaPoliseRepository;
     }
     
     @Transactional
@@ -43,9 +47,6 @@ public class PolisaService {
     public List<PolisaDto> vratiSvePolise() {
         List<Polisa> p = polisaRepository.findAll();
         System.out.println("POLISE: "+p.size());
-        if(p.get(0).getDatumOD() == null){
-            System.out.println("NULLLL JEEEE...............................................");
-        }
         return p.stream().map((pp) -> {
             return polisaMapper.toDto(pp);
         }).collect(Collectors.toList());
@@ -56,7 +57,9 @@ public class PolisaService {
 
     @Transactional
     public boolean obrisiPolisu(int id) throws Exception{
-           polisaRepository.deleteById(id);
-           return true;
+
+        stavkaPoliseRepository.deleteAllByPolisa_polisaID(id);
+        polisaRepository.deleteById(id);
+        return true;
     }
 }
