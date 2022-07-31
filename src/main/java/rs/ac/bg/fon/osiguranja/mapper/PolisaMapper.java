@@ -32,11 +32,11 @@ public class PolisaMapper implements GenericMapper<PolisaDto, Polisa>{
     @Override
     public PolisaDto toDto(Polisa entity) {
         PolisaDto p = new PolisaDto();
-        p.setAgentOsiguranjaID(entity.getAgentOsiguranja().getAgentID());
+        p.setAgentOsiguranja(entity.getAgentOsiguranja().getIme()+" "+entity.getAgentOsiguranja().getPrezime());
         p.setDatumDO(entity.getDatumDO());
         p.setDatumOD(entity.getDatumOD());
         p.setGradjevinskaVrednost(entity.getGradjevinskaVrednost());
-        p.setKlijentID(entity.getKlijent().getId());
+        p.setKlijent(entity.getKlijent().getImePrezime());
         p.setPolisaID(entity.getPolisaID());
         p.setPovrsinaStana(entity.getPovrsinaStana());
         p.setUkupnaPremija(entity.getUkupnaPremija());
