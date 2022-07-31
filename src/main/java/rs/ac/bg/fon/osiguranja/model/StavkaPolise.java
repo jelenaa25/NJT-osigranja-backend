@@ -28,9 +28,6 @@ import lombok.ToString;
  * @author Korisnik
  */
 @Data
-@ToString
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
