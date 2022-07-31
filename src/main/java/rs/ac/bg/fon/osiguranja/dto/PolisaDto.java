@@ -20,12 +20,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PolisaDto implements Dto{
     private int polisaID;
-    private int klijentID;
+    private String klijent;
     private BigDecimal povrsinaStana;
     private BigDecimal vrednostPoKvM;
     private BigDecimal gradjevinskaVrednost;
     private BigDecimal ukupnaPremija;
     private Date datumOD;
     private Date datumDO;
-    private int agentOsiguranjaID;
+    private String agentOsiguranja;
 }
