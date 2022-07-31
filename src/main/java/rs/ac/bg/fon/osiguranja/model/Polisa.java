@@ -56,6 +56,6 @@ public class Polisa implements Entitet, Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AgentID", referencedColumnName = "AgentID")
     private Agent agentOsiguranja;
-    @OneToMany(mappedBy = "polisa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "polisa", fetch = FetchType.LAZY)
     private List<StavkaPolise> stavkePolise;
 }
