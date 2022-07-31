@@ -5,10 +5,19 @@
  */
 package rs.ac.bg.fon.osiguranja.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  *
  * @author Korisnik
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PredmetOsiguranjaDto implements Dto{
-    
+    private int predmetID;
+    private String naziv;
+    private String napomena;
 }

@@ -5,10 +5,20 @@
  */
 package rs.ac.bg.fon.osiguranja.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  *
  * @author Korisnik
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class KlijentDto implements Dto{
+    private int id;
+    private String imePrezime;
+    private int mesto;
     
 }
