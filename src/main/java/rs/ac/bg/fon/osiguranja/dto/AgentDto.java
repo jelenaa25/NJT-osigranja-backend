@@ -5,10 +5,23 @@
  */
 package rs.ac.bg.fon.osiguranja.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  *
  * @author Korisnik
  */
-public class AgentDto implements Dto{
-    
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class AgentDto implements Dto {
+
+    private int agentID;
+    private String ime;
+    private String prezime;
+    private String strucnaSprema;
+    private String username;
+
 }
