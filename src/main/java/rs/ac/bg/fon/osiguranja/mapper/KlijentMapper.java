@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package rs.ac.bg.fon.osiguranja.mapper;
+import org.springframework.stereotype.Component;
 import rs.ac.bg.fon.osiguranja.dto.KlijentDto;
 import rs.ac.bg.fon.osiguranja.model.Klijent;
 
@@ -11,7 +12,7 @@ import rs.ac.bg.fon.osiguranja.model.Klijent;
  *
  * @author Korisnik
  */
-
+@Component
 public class KlijentMapper implements GenericMapper<KlijentDto, Klijent>{
 //dodaj mestoRepositoryyy
     @Override

@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.mapper;
 
+import org.springframework.stereotype.Component;
 import rs.ac.bg.fon.osiguranja.dto.AgentDto;
 import rs.ac.bg.fon.osiguranja.model.Agent;
 
@@ -12,6 +13,7 @@ import rs.ac.bg.fon.osiguranja.model.Agent;
  *
  * @author Korisnik
  */
+@Component
 public class AgentMapper implements GenericMapper<AgentDto, Agent>{
 
     @Override

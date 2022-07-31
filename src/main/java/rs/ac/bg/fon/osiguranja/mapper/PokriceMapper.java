@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.mapper;
 
+import org.springframework.stereotype.Component;
 import rs.ac.bg.fon.osiguranja.dto.PokriceDto;
 import rs.ac.bg.fon.osiguranja.model.Pokrice;
 
@@ -12,6 +13,7 @@ import rs.ac.bg.fon.osiguranja.model.Pokrice;
  *
  * @author Korisnik
  */
+@Component
 public class PokriceMapper implements GenericMapper<PokriceDto, Pokrice>{
 
     @Override
