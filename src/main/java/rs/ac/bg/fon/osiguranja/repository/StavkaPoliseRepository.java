@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.repository;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import rs.ac.bg.fon.osiguranja.model.StavkaPolise;
@@ -16,5 +17,8 @@ import rs.ac.bg.fon.osiguranja.model.idclasses.StavkaPoliseId;
  */
 @Repository
 public interface StavkaPoliseRepository extends JpaRepository<StavkaPolise, StavkaPoliseId>{
+
+
+    public void deleteAllByPolisa_polisaID(int polisa);
     
 }
