@@ -43,7 +43,6 @@ public class PolisaService {
         return polisaMapper.toDto(polisaRepository.save(polisaMapper.toEntity(p)));
     }
     
-    @Transactional
     public List<PolisaDto> vratiSvePolise() {
         List<Polisa> p = polisaRepository.findAll();
         System.out.println("POLISE: "+p.size());
