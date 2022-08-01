@@ -38,7 +38,8 @@ public class Klijent implements Entitet, Serializable{
     private int id;
     @Column(name = "ImePrezime")
     private String imePrezime;
-    private long JMBG;
+    @Column(name = "JMBG")
+    private long jmbg;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Mesto", referencedColumnName = "PTT")
     private Mesto mesto;
