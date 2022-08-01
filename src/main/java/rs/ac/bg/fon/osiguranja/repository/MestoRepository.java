@@ -15,5 +15,5 @@ import rs.ac.bg.fon.osiguranja.model.Mesto;
  */
 @Repository
 public interface MestoRepository extends JpaRepository<Mesto, Integer>{
-    
+    Mesto findByNaziv(String naziv);
 }
