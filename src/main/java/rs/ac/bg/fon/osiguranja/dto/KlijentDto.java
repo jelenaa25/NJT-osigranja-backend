@@ -17,8 +17,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class KlijentDto implements Dto{
-    private int id;
+    private long jmbg;
     private String imePrezime;
-    private int mesto;
+    private String mesto;
     
 }
