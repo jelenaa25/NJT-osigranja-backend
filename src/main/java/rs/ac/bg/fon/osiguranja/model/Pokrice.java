@@ -8,6 +8,8 @@ package rs.ac.bg.fon.osiguranja.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -28,6 +30,7 @@ import lombok.ToString;
 @Table(name = "pokrice")
 public class Pokrice implements Entitet, Serializable{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PokriceID")
     private int pokriceID;
     @Column(name = "Naziv")
