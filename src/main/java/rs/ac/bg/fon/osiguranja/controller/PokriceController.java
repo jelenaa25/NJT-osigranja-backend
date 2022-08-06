@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import rs.ac.bg.fon.osiguranja.dto.PokriceDto;
-import rs.ac.bg.fon.osiguranja.dto.PolisaDto;
 import rs.ac.bg.fon.osiguranja.service.PokriceService;
 
 /**

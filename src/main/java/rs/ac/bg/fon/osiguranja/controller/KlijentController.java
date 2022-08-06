@@ -5,13 +5,16 @@
  */
 package rs.ac.bg.fon.osiguranja.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import rs.ac.bg.fon.osiguranja.dto.KlijentDto;
+import rs.ac.bg.fon.osiguranja.dto.PokriceDto;
 import rs.ac.bg.fon.osiguranja.dto.PolisaDto;
 import rs.ac.bg.fon.osiguranja.service.KlijentService;
 
@@ -35,6 +38,10 @@ public class KlijentController {
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
+    }
+    @GetMapping("/klijent")
+    public List<KlijentDto> vratiSveKlijente() throws Exception {
+        return klijentService.vratiSveKlijente();
     }
     
 }
