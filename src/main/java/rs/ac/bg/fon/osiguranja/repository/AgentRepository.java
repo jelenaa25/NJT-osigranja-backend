@@ -15,5 +15,8 @@ import rs.ac.bg.fon.osiguranja.model.Agent;
  */
 @Repository
 public interface AgentRepository extends JpaRepository<Agent, Integer>{
-    
+    Agent findAgentByUsernameAndPassword(String username, String password);
+
+    Agent findAgentByUsername(String username);
+   
 }

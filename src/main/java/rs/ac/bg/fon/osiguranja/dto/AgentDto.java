@@ -6,22 +6,26 @@
 package rs.ac.bg.fon.osiguranja.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
  * @author Korisnik
  */
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
-public class AgentDto implements Dto {
-
-    private int agentID;
-    private String ime;
-    private String prezime;
-    private String strucnaSprema;
-    private String username;
-
+@EqualsAndHashCode
+@ToString
+@AllArgsConstructor
+public class AgentDto implements Dto{
+    int id;
+    String username;
+    String ime;
+    String prezime;
+    String token;
 }

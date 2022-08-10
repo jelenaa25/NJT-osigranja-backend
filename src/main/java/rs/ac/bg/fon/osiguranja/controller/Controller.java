@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 
 public class Controller {
-    @GetMapping("/vrati")
+    @GetMapping("/")
     public int vratiJedan(){
         return 22;
     }
