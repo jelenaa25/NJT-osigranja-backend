@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import rs.ac.bg.fon.osiguranja.model.Agent;
@@ -24,8 +25,9 @@ import rs.ac.bg.fon.osiguranja.repository.AgentRepository;
  * @author Korisnik
  */
 @Service
-public class JwtAgentService implements UserDetailsService{
-   @Autowired
+public class JwtAgentService implements UserDetailsService {
+
+    @Autowired
     private AgentService userService;
 
     @Override
@@ -34,14 +36,14 @@ public class JwtAgentService implements UserDetailsService{
             rs.ac.bg.fon.osiguranja.model.Agent user = userService.loadUserByUsername(username);
 
             if (user.getUsername().equals(username)) {
+                
                 return new User(user.getUsername(), user.getPassword(),
                         new ArrayList<>());
-            } 
+            }
         } catch (Exception ex) {
             Logger.getLogger(JwtAgentService.class.getName()).log(Level.SEVERE, null, ex);
         }
-                throw new UsernameNotFoundException("User not found with username: " + username);
+        throw new UsernameNotFoundException("User not found with username: " + username);
     }
-    
-    
+
 }
