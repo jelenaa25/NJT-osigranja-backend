@@ -88,7 +88,7 @@ public class JwtAuthenticationController {
             Agent user = userService.loadUserByUsername(userForLogin.getUsername());
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             if (user != null && encoder.matches(userForLogin.getPassword(), user.getPassword())) {
-                System.out.println("User " + user.getUsername() + "logged.");
+                System.out.println("User " + user.getUsername() + " logged.");
                 
                 return new ResponseEntity<>(user, HttpStatus.OK);
             }
