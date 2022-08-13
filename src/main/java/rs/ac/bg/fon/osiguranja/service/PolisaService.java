@@ -65,10 +65,10 @@ public class PolisaService {
 
     @Transactional
     public boolean obrisiPolisu(int id) throws Exception {
-/*
+
        // stavkaPoliseRepository.deleteAllByPolisa_polisaID(id);
-       stavkaPoliseService.obrisiStavke(id);
+        stavkaPoliseService.obrisiStavke(id);
         polisaRepository.deleteById(id);
-        return true; */ return true;
+        return true; 
     }
 }
