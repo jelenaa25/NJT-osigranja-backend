@@ -5,9 +5,13 @@
  */
 package rs.ac.bg.fon.osiguranja.mapper;
 
+import java.math.BigDecimal;
 import org.springframework.stereotype.Component;
 import rs.ac.bg.fon.osiguranja.dto.StavkaPoliseDto;
 import rs.ac.bg.fon.osiguranja.model.Entitet;
+import rs.ac.bg.fon.osiguranja.model.Pokrice;
+import rs.ac.bg.fon.osiguranja.model.Polisa;
+import rs.ac.bg.fon.osiguranja.model.PredmetOsiguranja;
 import rs.ac.bg.fon.osiguranja.model.StavkaPolise;
 
 /**
@@ -24,7 +28,10 @@ public class StavkaPoliseMapper implements GenericMapper<StavkaPoliseDto, Stavka
         st.setPremija(dto.getPremija());
         st.setProcenatAmortizacije(dto.getProcenatAmortizacije());
         st.setRb(dto.getRb());
+        st.setPolisa(new Polisa(dto.getPolisaID(), null, BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ONE, null, null, null, null));
         st.setSumaOsiguranja(dto.getSumaOsiguranja());
+        st.setPokrice(new Pokrice(dto.getPokriceID(), "", ""));
+        st.setPredmetOsiguranja(new PredmetOsiguranja(dto.getPredmetOsiguranjaID(), "", ""));
         return st;
     }
 

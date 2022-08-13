@@ -28,4 +28,5 @@ public class AgentDto implements Dto{
     String ime;
     String prezime;
     String token;
+    String role;
 }

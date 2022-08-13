@@ -42,7 +42,8 @@ public class Agent implements Entitet {
     private String password;
     @Column(name = "StrucnaSprema")
     private String strucnaSprema;
-    private Role Role;
+    @Column(name = "Role")
+    private String Role;
 /*
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -75,7 +76,5 @@ public class Agent implements Entitet {
         ROLE_ADMIN, ROLE_USER
     }
 */
-    public enum Role {
-        ROLE_ADMIN, ROLE_USER
-    }
+    
 }

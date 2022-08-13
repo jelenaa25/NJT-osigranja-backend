@@ -6,6 +6,10 @@
 package rs.ac.bg.fon.osiguranja.model.idclasses;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
+import javax.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +21,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class StavkaPoliseId implements Serializable{
+public class StavkaPoliseId implements Serializable {
+
+   
+
+
     private int polisa;
-    private int rb;
+   // private int rb;
 }

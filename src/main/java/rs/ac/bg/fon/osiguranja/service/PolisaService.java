@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rs.ac.bg.fon.osiguranja.dto.PolisaDto;
+import rs.ac.bg.fon.osiguranja.dto.StavkaPoliseDto;
 import rs.ac.bg.fon.osiguranja.mapper.PolisaMapper;
+import rs.ac.bg.fon.osiguranja.mapper.StavkaPoliseMapper;
 import rs.ac.bg.fon.osiguranja.model.Polisa;
 import rs.ac.bg.fon.osiguranja.model.StavkaPolise;
 import rs.ac.bg.fon.osiguranja.repository.PolisaRepository;
@@ -26,39 +28,47 @@ import rs.ac.bg.fon.osiguranja.repository.StavkaPoliseRepository;
  */
 @Service
 public class PolisaService {
-    
-   
-    private PolisaRepository polisaRepository;
-    private PolisaMapper polisaMapper;
-    private StavkaPoliseRepository stavkaPoliseRepository;
 
-    public PolisaService(PolisaRepository polisaRepository, PolisaMapper polisaMapper, StavkaPoliseRepository stavkaPoliseRepository) {
+    private final PolisaRepository polisaRepository;
+    private final PolisaMapper polisaMapper;
+
+    private final StavkaPoliseService stavkaPoliseService;
+
+    public PolisaService(PolisaRepository polisaRepository, PolisaMapper polisaMapper, StavkaPoliseService stavkaPoliseService) {
         this.polisaRepository = polisaRepository;
         this.polisaMapper = polisaMapper;
-        this.stavkaPoliseRepository = stavkaPoliseRepository;
+        this.stavkaPoliseService = stavkaPoliseService;
     }
     
     @Transactional
     public PolisaDto kreirajPolisu(PolisaDto p) {
-        return polisaMapper.toDto(polisaRepository.save(polisaMapper.toEntity(p)));
+        PolisaDto a1 = polisaMapper.toDto(polisaRepository.save(polisaMapper.toEntity(p)));
+        System.out.println("a1 polisaid:"+a1.getPolisaID());
+        p.getStavke().forEach((e) -> {
+            e.setPolisaID(a1.getPolisaID());
+            System.out.println("E:"+e);
+           // stavkaPoliseRepository.save(stavkaPoliseMapper.toEntity(e));
+           stavkaPoliseService.kreirajStavku(e);
+        });
+        return a1;
     }
-    
+
     public List<PolisaDto> vratiSvePolise() {
         List<Polisa> p = polisaRepository.findAll();
-        System.out.println("POLISE: "+p.size());
+        System.out.println("POLISE: " + p.size());
         return p.stream().map((pp) -> {
             return polisaMapper.toDto(pp);
         }).collect(Collectors.toList());
-        
-      
-       // return polisaRepository.findAll();
+
+        // return polisaRepository.findAll();
     }
 
     @Transactional
-    public boolean obrisiPolisu(int id) throws Exception{
-
-        stavkaPoliseRepository.deleteAllByPolisa_polisaID(id);
+    public boolean obrisiPolisu(int id) throws Exception {
+/*
+       // stavkaPoliseRepository.deleteAllByPolisa_polisaID(id);
+       stavkaPoliseService.obrisiStavke(id);
         polisaRepository.deleteById(id);
-        return true;
+        return true; */ return true;
     }
 }

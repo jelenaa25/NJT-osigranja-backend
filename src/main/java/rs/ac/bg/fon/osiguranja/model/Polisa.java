@@ -5,8 +5,10 @@
  */
 package rs.ac.bg.fon.osiguranja.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -20,6 +22,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,6 +37,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "polisa")
 public class Polisa implements Entitet, Serializable {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "PolisaID")
@@ -49,9 +53,14 @@ public class Polisa implements Entitet, Serializable {
     private BigDecimal gradjevinskaVrednost;
     @Column(name = "UkupnaPremija")
     private BigDecimal ukupnaPremija;
+
     @Column(name = "DatumOd")
+    @JsonFormat
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date datumOD;
     @Column(name = "DatumDo")
+    @JsonFormat
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date datumDO;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AgentID", referencedColumnName = "AgentID")

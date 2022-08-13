@@ -64,34 +64,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers(HttpMethod.POST, "/predmet").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.POST, "/polisa").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.GET, "/polisa").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.DELETE, "/polisa/{id}").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.GET, "/pokrice").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.GET, "/pokrice/{id}").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.POST, "/pokrice").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.PUT, "/pokrice/{id}").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.GET, "/klijent").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.POST, "/klijent").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.POST, "/predmet").permitAll()
+                .antMatchers(HttpMethod.POST, "/polisa").permitAll()
+                .antMatchers(HttpMethod.GET, "/polisa").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/polisa/{id}").permitAll()
+                .antMatchers(HttpMethod.GET, "/pokrice").permitAll()
+                .antMatchers(HttpMethod.GET, "/pokrice/{id}").permitAll()
+                .antMatchers(HttpMethod.POST, "/pokrice").permitAll()
+                .antMatchers(HttpMethod.PUT, "/pokrice/{id}").permitAll()
+                .antMatchers(HttpMethod.GET, "/klijent").permitAll()
+                .antMatchers(HttpMethod.POST, "/klijent").permitAll()
                 .anyRequest().authenticated().and().
                 exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-     */    
-    }
+        
+*/    
+}
 
-    
+  
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
         System.out.println("OVDE");
         webSecurity
                 .ignoring()
                 .antMatchers(
-                        HttpMethod.POST,"/**"
+                        HttpMethod.POST,"/authenticate"
                 )
-                .antMatchers(HttpMethod.OPTIONS, "/**")
                 .and()
                 .ignoring()
                 .antMatchers(

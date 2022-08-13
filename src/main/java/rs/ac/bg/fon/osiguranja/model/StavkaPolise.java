@@ -8,6 +8,7 @@ package rs.ac.bg.fon.osiguranja.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -36,12 +37,14 @@ import rs.ac.bg.fon.osiguranja.model.idclasses.StavkaPoliseId;
 @IdClass(StavkaPoliseId.class)
 @Table(name = "stavkapolise")
 public class StavkaPolise implements Entitet, Serializable{
+   // @Id
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "PolisaID", referencedColumnName = "PolisaID")
     private Polisa polisa;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    //@EmbeddedId
     @Column(name = "RB")
     private int rb;
     @ManyToOne(fetch = FetchType.LAZY)

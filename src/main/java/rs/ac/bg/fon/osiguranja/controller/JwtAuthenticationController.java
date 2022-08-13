@@ -59,7 +59,8 @@ public class JwtAuthenticationController {
         Agent user = userService.loadUserByUsername(authenticationRequest.getUsername());
         System.out.println("Agent:"+user);
         final String token = jwtTokenUtil.generateToken(userDetails);
-        AgentDto userDto = new AgentDto(user.getAgentID(), user.getUsername(), user.getIme(),user.getPrezime(), token);
+        System.out.println("ROLE: "+user.getRole());
+        AgentDto userDto = new AgentDto(user.getAgentID(), user.getUsername(), user.getIme(),user.getPrezime(), token, user.getRole());
 
 
         return ResponseEntity.ok(userDto); 
