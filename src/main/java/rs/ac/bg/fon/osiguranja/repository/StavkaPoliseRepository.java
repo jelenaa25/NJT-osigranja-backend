@@ -19,8 +19,8 @@ import rs.ac.bg.fon.osiguranja.model.idclasses.StavkaPoliseId;
 public interface StavkaPoliseRepository extends JpaRepository<StavkaPolise, StavkaPoliseId>{
 
 
-   // public void deleteAllByPolisa_polisaID(int polisa);
-  //  List<StavkaPolise> findAllByPolisa_polisaID(int polisa);
+   public void deleteAllByPolisa_polisaID(int polisa);
+  List<StavkaPolise> findAllByPolisa_polisaID(int polisa);
     
     
 }
