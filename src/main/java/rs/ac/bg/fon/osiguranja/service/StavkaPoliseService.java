@@ -41,10 +41,10 @@ public class StavkaPoliseService {
         
         return stavkaPoliseMapper.toDto(sacuvana);
     }
-   /* 
+   
     @Transactional
     public void obrisiStavke(int polisaID){
         stavkaPoliseRepository.deleteAllByPolisa_polisaID(polisaID);
     }
-    */
+    
 }
