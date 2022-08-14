@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -30,5 +31,6 @@ public class Mesto implements Entitet, Serializable{
     @Id
     private int PTT;
     @Column(name = "Naziv")
+    @NotBlank(message = "Naziv mesta je obavezan.")
     private String naziv;
 }

@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.dto;
 
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PokriceDto implements Dto{
     private int pokriceID;
+    @NotBlank(message = "Naziv pokrica je obavezan.")
     private String naziv;
     private String napomena;
 }

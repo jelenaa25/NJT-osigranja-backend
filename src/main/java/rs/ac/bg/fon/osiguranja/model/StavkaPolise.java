@@ -18,6 +18,7 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -37,21 +38,21 @@ import rs.ac.bg.fon.osiguranja.model.idclasses.StavkaPoliseId;
 @IdClass(StavkaPoliseId.class)
 @Table(name = "stavkapolise")
 public class StavkaPolise implements Entitet, Serializable{
-   // @Id
     @Id
     @ManyToOne()
     @JoinColumn(name = "PolisaID", referencedColumnName = "PolisaID")
     private Polisa polisa;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    //@EmbeddedId
     @Column(name = "RB")
     private int rb;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PredmetID", referencedColumnName = "PredmetID")
+    @NotNull(message = "Predmet je obavezan.")
     private PredmetOsiguranja predmetOsiguranja;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PokriceID", referencedColumnName = "PokriceID")
+    @NotNull(message = "Pokrice je obavezno.")
     private Pokrice pokrice;
     @Column(name  = "SumaOsiguranja")
     private BigDecimal sumaOsiguranja;

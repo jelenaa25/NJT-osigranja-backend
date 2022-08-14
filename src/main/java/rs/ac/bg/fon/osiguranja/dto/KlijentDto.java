@@ -5,6 +5,8 @@
  */
 package rs.ac.bg.fon.osiguranja.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +19,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class KlijentDto implements Dto{
+    
     private long jmbg;
+    @NotBlank(message = "Ime i prezime su obavezni.")
     private String imePrezime;
     private String mesto;
     

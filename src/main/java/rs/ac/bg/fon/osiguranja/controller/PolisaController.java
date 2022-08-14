@@ -6,6 +6,7 @@
 package rs.ac.bg.fon.osiguranja.controller;
 
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public class PolisaController {
     
     
     @PostMapping("/polisa")
-    public ResponseEntity<Object> kreirajPolisu(@RequestBody PolisaDto p) throws Exception{
+    public ResponseEntity<Object> kreirajPolisu(@RequestBody @Valid PolisaDto p) throws Exception{
         try {
             return ResponseEntity.ok(polisaService.kreirajPolisu(p));
         } catch (Exception ex) {

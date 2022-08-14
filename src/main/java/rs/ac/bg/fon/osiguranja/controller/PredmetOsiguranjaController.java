@@ -6,6 +6,7 @@
 package rs.ac.bg.fon.osiguranja.controller;
 
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class PredmetOsiguranjaController {
     }
     
     @PostMapping("/predmet")
-    public ResponseEntity<Object> kreirajPredmetOsiguranja(@RequestBody PredmetOsiguranjaDto p) throws Exception {
+    public ResponseEntity<Object> kreirajPredmetOsiguranja(@RequestBody @Valid PredmetOsiguranjaDto p) throws Exception {
         try {
             return ResponseEntity.ok(predmetOsiguranjaService.kreirajPredmetOsiguranja(p));
         } catch (Exception ex) {

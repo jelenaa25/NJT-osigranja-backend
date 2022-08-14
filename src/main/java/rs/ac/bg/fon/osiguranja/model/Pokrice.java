@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -34,6 +35,7 @@ public class Pokrice implements Entitet, Serializable{
     @Column(name = "PokriceID")
     private int pokriceID;
     @Column(name = "Naziv")
+    @NotBlank(message = "Naziv pokrica je obavezan.")
     private String naziv;
     @Column(name = "Napomena")
     private String napomena;

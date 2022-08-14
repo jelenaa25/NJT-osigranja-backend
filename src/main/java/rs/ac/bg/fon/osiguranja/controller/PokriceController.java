@@ -7,6 +7,7 @@ package rs.ac.bg.fon.osiguranja.controller;
 
 import java.util.List;
 import java.util.Optional;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,7 @@ public class PokriceController {
     }
 
     @PostMapping("/pokrice")
-    public ResponseEntity<Object> kreirajPokrice(@RequestBody PokriceDto p) throws Exception {
+    public ResponseEntity<Object> kreirajPokrice(@RequestBody  @Valid PokriceDto p) throws Exception {
         try {
             return ResponseEntity.ok(pokriceService.kreirajPokrice(p));
         } catch (Exception ex) {
@@ -56,7 +57,7 @@ public class PokriceController {
 
     @PutMapping("pokrice/{id}")
     public ResponseEntity<Object> promeniPokriceById(@PathVariable("id") int id,
-            @RequestBody PokriceDto pok) throws Exception {
+            @RequestBody @Valid PokriceDto pok) throws Exception {
         try {
             return ResponseEntity.ok(pokriceService.promeniPokriceById(id, pok));
         } catch (Exception ex) {

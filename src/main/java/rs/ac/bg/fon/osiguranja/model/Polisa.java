@@ -23,6 +23,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -44,16 +47,19 @@ public class Polisa implements Entitet, Serializable {
     private int polisaID;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "KlijentID", referencedColumnName = "KlijentID")
+    @NotNull(message = "Klijent mora biti unet.")
     private Klijent klijent;
     @Column(name = "PovrsinaStana")
+    @Min(value = 1, message = "Povrsina stana mora biti veca od nule")
     private BigDecimal povrsinaStana;
     @Column(name = "VrednostPoKvM")
+    @Min(value = 1, message = "Vrednost po KvM mora biti veca od nule")
     private BigDecimal vrednostPoKvM;
     @Column(name = "GradjevinskaVrednost")
+    @Min(value = 1, message = "Gradjevinska vrednost mora biti veca od nule")
     private BigDecimal gradjevinskaVrednost;
     @Column(name = "UkupnaPremija")
     private BigDecimal ukupnaPremija;
-
     @Column(name = "DatumOd")
     @JsonFormat
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -64,7 +70,11 @@ public class Polisa implements Entitet, Serializable {
     private Date datumDO;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AgentID", referencedColumnName = "AgentID")
+    @NotNull(message = "Agent mora biti unet.")
     private Agent agentOsiguranja;
     @OneToMany(mappedBy = "polisa", fetch = FetchType.LAZY)
+    @NotEmpty(message = "Polisa mora imati bar jednu stavku.")
+    @NotNull(message = "Polisa mora imati bar jednu stavku.")
     private List<StavkaPolise> stavkePolise;
+    
 }

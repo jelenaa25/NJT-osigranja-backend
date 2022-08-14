@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.dto;
 
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,9 +25,13 @@ import lombok.ToString;
 @AllArgsConstructor
 public class AgentDto implements Dto{
     int id;
+    @NotBlank(message = "Username je obavezno.")
     String username;
+    @NotBlank(message = "Ime je obavezno.")
     String ime;
+    @NotBlank(message = "Prezime je obavezno.")
     String prezime;
     String token;
+    @NotBlank(message = "Uloga je obavezna.")
     String role;
 }

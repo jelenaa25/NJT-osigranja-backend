@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,16 +34,22 @@ public class Agent implements Entitet {
     @Id
     private int agentID;
     @Column(name = "Ime")
+    @NotBlank(message = "Ime je obavezno.")
     private String ime;
     @Column(name = "Prezime")
+    @NotBlank(message = "Prezime je obavezno.")
     private String prezime;
     @Column(name = "Username")
+    @NotBlank(message = "Username je obavezno.")
     private String username;
     @Column(name = "Password")
+    @NotBlank(message = "Password je obavezan.")
     private String password;
     @Column(name = "StrucnaSprema")
+    @NotBlank(message = "Strucna sprema je obavezna.")
     private String strucnaSprema;
     @Column(name = "Role")
+    @NotBlank(message = "Uloga je obavezna.")
     private String Role;
 /*
     @Override

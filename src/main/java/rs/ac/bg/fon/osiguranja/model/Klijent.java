@@ -15,6 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -37,10 +40,13 @@ public class Klijent implements Entitet, Serializable{
     @Column(name = "KlijentID")
     private int id;
     @Column(name = "ImePrezime")
+    @NotBlank(message = "Ime i prezime su obavezni.")
     private String imePrezime;
     @Column(name = "JMBG")
+   
     private long jmbg;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Mesto", referencedColumnName = "PTT")
+    @NotNull(message = "Mesto mora biti uneto.")
     private Mesto mesto;
 }

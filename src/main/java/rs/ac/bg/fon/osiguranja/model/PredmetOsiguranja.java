@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class PredmetOsiguranja implements Entitet, Serializable {
     @Column(name = "PredmetID")
     private int predmetID;
     @Column(name = "Naziv")
+    @NotBlank(message = "Naziv predmeta osiguranja je obavezan.")
     private String naziv;
     @Column(name = "Napomena")
     private String napomena;
