@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import rs.ac.bg.fon.osiguranja.dto.PolisaDto;
 import rs.ac.bg.fon.osiguranja.service.PolisaService;
@@ -45,8 +48,11 @@ public class PolisaController {
     public List<PolisaDto> vratiSvePolise()throws Exception{
       return polisaService.vratiSvePolise();
     }
-    @DeleteMapping("/polisa/{id}")
-    public ResponseEntity<Object> obrisiPolisu(@PathVariable("id") int id ) throws Exception{
+    //@DeleteMapping("/polisa/{id}")
+   // @ResponseBody
+    @RequestMapping( value = "/polisa/{id}", method = {RequestMethod.DELETE})
+    @ResponseBody
+    public ResponseEntity<Object> doDelete(@PathVariable("id") int id ) throws Exception{
         
         try {
            return ResponseEntity.ok(polisaService.obrisiPolisu(id));
