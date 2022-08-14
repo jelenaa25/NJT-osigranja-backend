@@ -1,5 +1,6 @@
 package rs.ac.bg.fon.osiguranja.controller;
 
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +45,7 @@ public class JwtAuthenticationController {
     private AgentService userService;
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody @Valid JwtRequest authenticationRequest) throws Exception {
         System.out.println("USERNAME:"+authenticationRequest.getUsername());
         System.out.println("PASSWORD:"+authenticationRequest.getPassword());
         
