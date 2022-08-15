@@ -31,6 +31,6 @@ public class Mesto implements Entitet, Serializable{
     @Id
     private int PTT;
     @Column(name = "Naziv")
-    @NotBlank(message = "Naziv mesta je obavezan.")
+   // @NotBlank(message = "Naziv mesta je obavezan.")
     private String naziv;
 }

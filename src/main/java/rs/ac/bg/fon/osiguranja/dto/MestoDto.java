@@ -19,6 +19,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MestoDto implements Dto{
     private int PTT;
-    @NotBlank(message = "Naziv mesta je obavezan.")
+    //@NotBlank(message = "Naziv mesta je obavezan.")
     private String naziv;
 }

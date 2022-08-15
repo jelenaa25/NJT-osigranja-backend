@@ -7,6 +7,7 @@ package rs.ac.bg.fon.osiguranja.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -48,11 +49,11 @@ public class StavkaPolise implements Entitet, Serializable{
     private int rb;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PredmetID", referencedColumnName = "PredmetID")
-    @NotNull(message = "Predmet je obavezan.")
+    //@NotNull(message = "Predmet je obavezan.")
     private PredmetOsiguranja predmetOsiguranja;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PokriceID", referencedColumnName = "PokriceID")
-    @NotNull(message = "Pokrice je obavezno.")
+    //@NotNull(message = "Pokrice je obavezno.")
     private Pokrice pokrice;
     @Column(name  = "SumaOsiguranja")
     private BigDecimal sumaOsiguranja;

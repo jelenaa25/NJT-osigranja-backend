@@ -39,17 +39,21 @@ public class PolisaService {
         this.polisaMapper = polisaMapper;
         this.stavkaPoliseService = stavkaPoliseService;
     }
-    
+
     @Transactional
     public PolisaDto kreirajPolisu(PolisaDto p) {
+        System.out.println("ZA CUVANJE POLISA: ");
+        Polisa cuv = polisaMapper.toEntity(p);
+        System.out.println("---------"+cuv);
+        System.out.println("Stavke za cuvanje:---"+cuv.getStavkePolise());
         PolisaDto a1 = polisaMapper.toDto(polisaRepository.save(polisaMapper.toEntity(p)));
-        System.out.println("a1 polisaid:"+a1.getPolisaID());
+       /* System.out.println("a1 polisaid:" + a1.getPolisaID());
         p.getStavke().forEach((e) -> {
             e.setPolisaID(a1.getPolisaID());
-            System.out.println("E:"+e);
-           // stavkaPoliseRepository.save(stavkaPoliseMapper.toEntity(e));
-           stavkaPoliseService.kreirajStavku(e);
-        });
+            System.out.println("E:" + e);
+            // stavkaPoliseRepository.save(stavkaPoliseMapper.toEntity(e));
+            stavkaPoliseService.kreirajStavku(e);
+        });*/
         return a1;
     }
 
@@ -65,10 +69,23 @@ public class PolisaService {
 
     @Transactional
     public boolean obrisiPolisu(int id) throws Exception {
+        System.out.println("IDpolise:"+id);
+       // List<StavkaPolise> optionalStavke = stavkaPoliseService.findAllById(id);
+      //  if (optionalStavke != null) {
+        //    System.out.println("BrStavki:"+optionalStavke.size());
+          //  stavkaPoliseService.obrisiStavke(id);
 
-       // stavkaPoliseRepository.deleteAllByPolisa_polisaID(id);
-        stavkaPoliseService.obrisiStavke(id);
-        polisaRepository.deleteById(id);
-        return true; 
+       // }
+        /*
+        Optional<Polisa> optionalPolisa = polisaRepository.findById(id);
+        if (!optionalPolisa.isPresent()) {
+            throw new Exception("Polisa sa id =  " + id + " ne postoji.");
+        }*/
+        System.out.println("BrisanjePOLISEEEEEEEE");
+        //System.out.println("OpPolisa:"+optionalPolisa.get());
+       //polisaRepository.deleteByPolisaID(id);
+       
+       polisaRepository.deleteById(id);
+        return true;
     }
 }

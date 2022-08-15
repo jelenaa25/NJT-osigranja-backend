@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import rs.ac.bg.fon.osiguranja.model.StavkaPolise;
 
 /**
  *
@@ -27,17 +28,17 @@ import lombok.NoArgsConstructor;
 public class PolisaDto implements Dto{
     private int polisaID;
     private int klijent;
-    @Min(value = 1, message = "Povrsina stana mora biti veca od nule")
+    //@Min(value = 1, message = "Povrsina stana mora biti veca od nule")
     private BigDecimal povrsinaStana;
-    @Min(value = 1, message = "Vrednost po KvM mora biti veca od nule.")
+   // @Min(value = 1, message = "Vrednost po KvM mora biti veca od nule.")
     private BigDecimal vrednostPoKvM;
-    @Min(value = 1, message = "Gradjevinska vrednost mora biti veca od nule")
+    //@Min(value = 1, message = "Gradjevinska vrednost mora biti veca od nule")
     private BigDecimal gradjevinskaVrednost;
     private BigDecimal ukupnaPremija;
     private Date datumOD;
     private Date datumDO;
     private int agentOsiguranja;
-    @NotEmpty(message = "Polisa mora imati bar jednu stavku.")
-    @NotNull(message = "Polisa mora imati bar jednu stavku.")
-    private List<StavkaPoliseDto> stavke;
+   // @NotEmpty(message = "Polisa mora imati bar jednu stavku.")
+   // @NotNull(message = "Polisa mora imati bar jednu stavku.")
+    private List<StavkaPolise> stavke;
 }

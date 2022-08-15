@@ -22,10 +22,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class StavkaPoliseId implements Serializable {
-
-   
-
-
     private int polisa;
-   // private int rb;
+    private int rb;
 }

@@ -40,13 +40,13 @@ public class Klijent implements Entitet, Serializable{
     @Column(name = "KlijentID")
     private int id;
     @Column(name = "ImePrezime")
-    @NotBlank(message = "Ime i prezime su obavezni.")
+    //@NotBlank(message = "Ime i prezime su obavezni.")
     private String imePrezime;
     @Column(name = "JMBG")
    
     private long jmbg;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Mesto", referencedColumnName = "PTT")
-    @NotNull(message = "Mesto mora biti uneto.")
+    //@NotNull(message = "Mesto mora biti uneto.")
     private Mesto mesto;
 }

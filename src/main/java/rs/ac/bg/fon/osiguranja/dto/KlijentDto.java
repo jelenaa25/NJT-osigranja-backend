@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class KlijentDto implements Dto{
     
     private long jmbg;
-    @NotBlank(message = "Ime i prezime su obavezni.")
+    //@NotBlank(message = "Ime i prezime su obavezni.")
     private String imePrezime;
     private String mesto;
     

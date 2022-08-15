@@ -5,6 +5,8 @@
  */
 package rs.ac.bg.fon.osiguranja.service;
 
+import java.util.List;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,8 +38,6 @@ public class StavkaPoliseService {
         System.out.println("ZA CUVANJE "+nova);
         StavkaPolise sacuvana = stavkaPoliseRepository.save(nova);
         System.out.println("SACUVANA: "+sacuvana);
-       // StavkaPoliseDto a1 = stavkaPoliseMapper.toDto(stavkaPoliseRepository.save(stavkaPoliseMapper.toEntity(p)));
-        //System.out.println("a1 stavkaRB:"+a1.getRb());
         
         return stavkaPoliseMapper.toDto(sacuvana);
     }
@@ -45,6 +45,11 @@ public class StavkaPoliseService {
     @Transactional
     public void obrisiStavke(int polisaID){
         stavkaPoliseRepository.deleteAllByPolisa_polisaID(polisaID);
+    }
+
+    List<StavkaPolise> findAllById(int id) {
+        
+        return stavkaPoliseRepository.findAllByPolisa_polisaID(id);
     }
     
 }

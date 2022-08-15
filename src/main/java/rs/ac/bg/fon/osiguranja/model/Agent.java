@@ -34,22 +34,22 @@ public class Agent implements Entitet {
     @Id
     private int agentID;
     @Column(name = "Ime")
-    @NotBlank(message = "Ime je obavezno.")
+   // @NotBlank(message = "Ime je obavezno.")
     private String ime;
     @Column(name = "Prezime")
-    @NotBlank(message = "Prezime je obavezno.")
+    //@NotBlank(message = "Prezime je obavezno.")
     private String prezime;
     @Column(name = "Username")
-    @NotBlank(message = "Username je obavezno.")
+   // @NotBlank(message = "Username je obavezno.")
     private String username;
     @Column(name = "Password")
-    @NotBlank(message = "Password je obavezan.")
+   // @NotBlank(message = "Password je obavezan.")
     private String password;
     @Column(name = "StrucnaSprema")
-    @NotBlank(message = "Strucna sprema je obavezna.")
+   // @NotBlank(message = "Strucna sprema je obavezna.")
     private String strucnaSprema;
     @Column(name = "Role")
-    @NotBlank(message = "Uloga je obavezna.")
+    //@NotBlank(message = "Uloga je obavezna.")
     private String Role;
 /*
     @Override

@@ -36,8 +36,8 @@ public class PolisaController {
     }
     
     
-    @PostMapping("/polisa")
-    public ResponseEntity<Object> kreirajPolisu(@RequestBody @Valid PolisaDto p) throws Exception{
+    @PostMapping("/polisa") //dodaj valid kasnijeee
+    public ResponseEntity<Object> kreirajPolisu(@RequestBody  PolisaDto p) throws Exception{
         try {
             return ResponseEntity.ok(polisaService.kreirajPolisu(p));
         } catch (Exception ex) {

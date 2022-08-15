@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.mapper;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
@@ -36,12 +37,16 @@ public class PolisaMapper implements GenericMapper<PolisaDto, Polisa>{
         p.setVrednostPoKvM(dto.getVrednostPoKvM());
         p.setPovrsinaStana(dto.getPovrsinaStana());
         p.setAgentOsiguranja(new Agent(dto.getAgentOsiguranja(), null, null, null, null, null, null));
-        List<StavkaPolise> stavke = new ArrayList<>();
-        StavkaPoliseMapper mm = new StavkaPoliseMapper();
-        for(StavkaPoliseDto s : dto.getStavke()){
+        //List<StavkaPolise> stavke = new ArrayList<>();
+       // StavkaPoliseMapper mm = new StavkaPoliseMapper();
+        /*for(StavkaPoliseDto s : dto.getStavke()){
            stavke.add(mm.toEntity(s));
         }
-        p.setStavkePolise(stavke);
+        p.setStavkePolise(stavke);*/
+        for(StavkaPolise o: dto.getStavke()){
+            o.setPolisa(new Polisa(dto.getPolisaID(), null, BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ONE, null, null, null, null));
+        }
+        p.setStavkePolise(dto.getStavke());
         return p;
     }
 
@@ -57,6 +62,7 @@ public class PolisaMapper implements GenericMapper<PolisaDto, Polisa>{
         p.setPovrsinaStana(entity.getPovrsinaStana());
         p.setUkupnaPremija(entity.getUkupnaPremija());
         p.setVrednostPoKvM(entity.getVrednostPoKvM());
+        p.setStavke(entity.getStavkePolise());
         return p;
     }
     

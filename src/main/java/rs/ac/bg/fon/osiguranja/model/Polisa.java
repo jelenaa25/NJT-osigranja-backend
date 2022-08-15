@@ -29,6 +29,8 @@ import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 /**
  *
@@ -47,16 +49,16 @@ public class Polisa implements Entitet, Serializable {
     private int polisaID;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "KlijentID", referencedColumnName = "KlijentID")
-    @NotNull(message = "Klijent mora biti unet.")
+    //@NotNull(message = "Klijent mora biti unet.")
     private Klijent klijent;
     @Column(name = "PovrsinaStana")
-    @Min(value = 1, message = "Povrsina stana mora biti veca od nule")
+    //@Min(value = 1, message = "Povrsina stana mora biti veca od nule")
     private BigDecimal povrsinaStana;
     @Column(name = "VrednostPoKvM")
-    @Min(value = 1, message = "Vrednost po KvM mora biti veca od nule")
+    //@Min(value = 1, message = "Vrednost po KvM mora biti veca od nule")
     private BigDecimal vrednostPoKvM;
     @Column(name = "GradjevinskaVrednost")
-    @Min(value = 1, message = "Gradjevinska vrednost mora biti veca od nule")
+    //@Min(value = 1, message = "Gradjevinska vrednost mora biti veca od nule")
     private BigDecimal gradjevinskaVrednost;
     @Column(name = "UkupnaPremija")
     private BigDecimal ukupnaPremija;
@@ -70,11 +72,11 @@ public class Polisa implements Entitet, Serializable {
     private Date datumDO;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AgentID", referencedColumnName = "AgentID")
-    @NotNull(message = "Agent mora biti unet.")
+    //@NotNull(message = "Agent mora biti unet.")
     private Agent agentOsiguranja;
-    @OneToMany(mappedBy = "polisa", fetch = FetchType.LAZY)
-    @NotEmpty(message = "Polisa mora imati bar jednu stavku.")
-    @NotNull(message = "Polisa mora imati bar jednu stavku.")
+    @OneToMany(mappedBy = "polisa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //@NotEmpty(message = "Polisa mora imati bar jednu stavku.")
+    //@NotNull(message = "Polisa mora imati bar jednu stavku.")
     private List<StavkaPolise> stavkePolise;
     
 }
