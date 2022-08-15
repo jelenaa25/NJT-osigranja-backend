@@ -41,12 +41,12 @@ public class PolisaService {
     }
 
     @Transactional
-    public PolisaDto kreirajPolisu(PolisaDto p) {
+    public boolean kreirajPolisu(PolisaDto p) {
         System.out.println("ZA CUVANJE POLISA: ");
-        Polisa cuv = polisaMapper.toEntity(p);
-        System.out.println("---------"+cuv);
-        System.out.println("Stavke za cuvanje:---"+cuv.getStavkePolise());
-        PolisaDto a1 = polisaMapper.toDto(polisaRepository.save(polisaMapper.toEntity(p)));
+       // Polisa cuv = polisaMapper.toEntity(p);
+       // System.out.println("---------"+cuv);
+       // System.out.println("Stavke za cuvanje:---"+cuv.getStavkePolise());
+       // PolisaDto a1 = polisaMapper.toDto(polisaRepository.save(polisaMapper.toEntity(p)));
        /* System.out.println("a1 polisaid:" + a1.getPolisaID());
         p.getStavke().forEach((e) -> {
             e.setPolisaID(a1.getPolisaID());
@@ -54,7 +54,11 @@ public class PolisaService {
             // stavkaPoliseRepository.save(stavkaPoliseMapper.toEntity(e));
             stavkaPoliseService.kreirajStavku(e);
         });*/
-        return a1;
+        //return a1;
+        
+        polisaRepository.save(polisaMapper.toEntity(p));
+        
+        return true;
     }
 
     public List<PolisaDto> vratiSvePolise() {

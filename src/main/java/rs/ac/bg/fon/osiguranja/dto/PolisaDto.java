@@ -40,5 +40,5 @@ public class PolisaDto implements Dto{
     private int agentOsiguranja;
    // @NotEmpty(message = "Polisa mora imati bar jednu stavku.")
    // @NotNull(message = "Polisa mora imati bar jednu stavku.")
-    private List<StavkaPolise> stavke;
+    private List<StavkaPoliseDto> stavke;
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import rs.ac.bg.fon.osiguranja.dto.PolisaDto;
+import rs.ac.bg.fon.osiguranja.model.Polisa;
 import rs.ac.bg.fon.osiguranja.service.PolisaService;
 
 /**
@@ -41,6 +42,7 @@ public class PolisaController {
         try {
             return ResponseEntity.ok(polisaService.kreirajPolisu(p));
         } catch (Exception ex) {
+           // ex.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }

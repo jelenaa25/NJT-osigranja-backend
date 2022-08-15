@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.mapper;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,8 @@ import rs.ac.bg.fon.osiguranja.model.Agent;
 import rs.ac.bg.fon.osiguranja.model.Klijent;
 import rs.ac.bg.fon.osiguranja.model.Polisa;
 import rs.ac.bg.fon.osiguranja.model.StavkaPolise;
+import rs.ac.bg.fon.osiguranja.repository.AgentRepository;
+import rs.ac.bg.fon.osiguranja.repository.KlijentRepository;
 
 /**
  *
@@ -23,30 +26,40 @@ import rs.ac.bg.fon.osiguranja.model.StavkaPolise;
 @Component
 public class PolisaMapper implements GenericMapper<PolisaDto, Polisa>{
 
+    private final AgentRepository agentRepository;
+    private final KlijentRepository klijentRepository;
+
+    public PolisaMapper(AgentRepository agentRepository, KlijentRepository klijentRepository) {
+        this.agentRepository = agentRepository;
+        this.klijentRepository = klijentRepository;
+    }
+    
+    
     @Override
     public Polisa toEntity(PolisaDto dto) {
         Polisa p = new Polisa();
         p.setDatumDO(dto.getDatumDO());
         System.out.println("KL1: ");
-        p.setKlijent(new Klijent(dto.getKlijent(), null, 0, null));
+        p.setKlijent(klijentRepository.findById(dto.getKlijent()).get());
         System.out.println("Kl2: "+p.getKlijent());
         p.setDatumOD(dto.getDatumDO());
         p.setGradjevinskaVrednost(dto.getGradjevinskaVrednost());
-        p.setPolisaID(dto.getPolisaID());
+
         p.setUkupnaPremija(dto.getUkupnaPremija());
         p.setVrednostPoKvM(dto.getVrednostPoKvM());
         p.setPovrsinaStana(dto.getPovrsinaStana());
-        p.setAgentOsiguranja(new Agent(dto.getAgentOsiguranja(), null, null, null, null, null, null));
-        //List<StavkaPolise> stavke = new ArrayList<>();
-       // StavkaPoliseMapper mm = new StavkaPoliseMapper();
-        /*for(StavkaPoliseDto s : dto.getStavke()){
-           stavke.add(mm.toEntity(s));
-        }
-        p.setStavkePolise(stavke);*/
-        for(StavkaPolise o: dto.getStavke()){
-            o.setPolisa(new Polisa(dto.getPolisaID(), null, BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ONE, null, null, null, null));
-        }
-        p.setStavkePolise(dto.getStavke());
+        
+        p.setAgentOsiguranja(agentRepository.findById(dto.getAgentOsiguranja()).get());
+       List<StavkaPolise> stavke = new ArrayList<>();
+       StavkaPoliseMapper mm = new StavkaPoliseMapper();
+
+      List<StavkaPoliseDto> stIzDto = dto.getStavke();
+      for(StavkaPoliseDto iz: stIzDto){
+          StavkaPolise e = mm.toEntity(iz);
+          e.setPolisa(p);
+          stavke.add(e);
+      }
+      p.setStavkePolise(stavke);
         return p;
     }
 
@@ -62,7 +75,12 @@ public class PolisaMapper implements GenericMapper<PolisaDto, Polisa>{
         p.setPovrsinaStana(entity.getPovrsinaStana());
         p.setUkupnaPremija(entity.getUkupnaPremija());
         p.setVrednostPoKvM(entity.getVrednostPoKvM());
-        p.setStavke(entity.getStavkePolise());
+        List<StavkaPoliseDto> stavke = new ArrayList<>();
+        StavkaPoliseMapper mm = new StavkaPoliseMapper();
+        for(StavkaPolise a: entity.getStavkePolise()){
+            stavke.add(mm.toDto(a));
+        }
+        p.setStavke(stavke);
         return p;
     }
     

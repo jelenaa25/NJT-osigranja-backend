@@ -6,6 +6,7 @@
 package rs.ac.bg.fon.osiguranja.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -21,6 +22,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.validation.constraints.Min;
@@ -47,10 +49,15 @@ public class Polisa implements Entitet, Serializable {
     @Id
     @Column(name = "PolisaID")
     private int polisaID;
+    
+    
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "KlijentID", referencedColumnName = "KlijentID")
     //@NotNull(message = "Klijent mora biti unet.")
     private Klijent klijent;
+    
+    
     @Column(name = "PovrsinaStana")
     //@Min(value = 1, message = "Povrsina stana mora biti veca od nule")
     private BigDecimal povrsinaStana;
@@ -70,11 +77,14 @@ public class Polisa implements Entitet, Serializable {
     @JsonFormat
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date datumDO;
+    
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AgentID", referencedColumnName = "AgentID")
     //@NotNull(message = "Agent mora biti unet.")
     private Agent agentOsiguranja;
-    @OneToMany(mappedBy = "polisa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "polisa", cascade = CascadeType.ALL)
     //@NotEmpty(message = "Polisa mora imati bar jednu stavku.")
     //@NotNull(message = "Polisa mora imati bar jednu stavku.")
     private List<StavkaPolise> stavkePolise;

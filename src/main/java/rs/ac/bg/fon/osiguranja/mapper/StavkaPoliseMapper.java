@@ -6,6 +6,7 @@
 package rs.ac.bg.fon.osiguranja.mapper;
 
 import java.math.BigDecimal;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rs.ac.bg.fon.osiguranja.dto.StavkaPoliseDto;
 import rs.ac.bg.fon.osiguranja.model.Entitet;
@@ -13,6 +14,9 @@ import rs.ac.bg.fon.osiguranja.model.Pokrice;
 import rs.ac.bg.fon.osiguranja.model.Polisa;
 import rs.ac.bg.fon.osiguranja.model.PredmetOsiguranja;
 import rs.ac.bg.fon.osiguranja.model.StavkaPolise;
+import rs.ac.bg.fon.osiguranja.repository.PokriceRepository;
+import rs.ac.bg.fon.osiguranja.repository.PolisaRepository;
+import rs.ac.bg.fon.osiguranja.repository.PredmetOsiguranjaRepository;
 
 /**
  *
@@ -22,14 +26,27 @@ import rs.ac.bg.fon.osiguranja.model.StavkaPolise;
 
 public class StavkaPoliseMapper implements GenericMapper<StavkaPoliseDto, StavkaPolise>{
     
+  /*  private final PolisaRepository polisaRepository;
+    private final PokriceRepository pokriceRepository;
+    private final PredmetOsiguranjaRepository osiguranjaRepository;
+
+    public StavkaPoliseMapper(PolisaRepository polisaRepository, PokriceRepository pokriceRepository, PredmetOsiguranjaRepository osiguranjaRepository) {
+        this.polisaRepository = polisaRepository;
+        this.pokriceRepository = pokriceRepository;
+        this.osiguranjaRepository = osiguranjaRepository;
+    }
+    */
+    @Autowired
+    private static int rb = 1;
+ 
     @Override
     public StavkaPolise toEntity(StavkaPoliseDto dto) {
         StavkaPolise st = new StavkaPolise();
         st.setPremija(dto.getPremija());
         st.setProcenatAmortizacije(dto.getProcenatAmortizacije());
-        st.setRb(dto.getRb());
-        st.setPolisa(new Polisa(dto.getPolisaID(), null, BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ONE, null, null, null, null));
-        st.setSumaOsiguranja(dto.getSumaOsiguranja());
+        st.setRb(rb++);
+     //   st.setPolisa(polisaRepository.findById(dto.get));
+       st.setSumaOsiguranja(dto.getSumaOsiguranja());
         st.setPokrice(new Pokrice(dto.getPokriceID(), "", ""));
         st.setPredmetOsiguranja(new PredmetOsiguranja(dto.getPredmetOsiguranjaID(), "", ""));
         return st;

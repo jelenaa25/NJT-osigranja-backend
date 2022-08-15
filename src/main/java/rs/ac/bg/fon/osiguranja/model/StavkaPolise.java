@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.CascadeType;
@@ -18,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -39,14 +41,18 @@ import rs.ac.bg.fon.osiguranja.model.idclasses.StavkaPoliseId;
 @IdClass(StavkaPoliseId.class)
 @Table(name = "stavkapolise")
 public class StavkaPolise implements Entitet, Serializable{
+    
+    
     @Id
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "PolisaID", referencedColumnName = "PolisaID")
     private Polisa polisa;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
+    
     @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "RB")
-    private int rb;
+    private Integer rb;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PredmetID", referencedColumnName = "PredmetID")
     //@NotNull(message = "Predmet je obavezan.")
