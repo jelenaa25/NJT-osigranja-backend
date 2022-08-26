@@ -45,7 +45,7 @@ public class JwtAuthenticationController {
     private AgentService userService;
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody @Valid JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
         System.out.println("USERNAME:"+authenticationRequest.getUsername());
         System.out.println("PASSWORD:"+authenticationRequest.getPassword());
         
@@ -60,8 +60,8 @@ public class JwtAuthenticationController {
         Agent user = userService.loadUserByUsername(authenticationRequest.getUsername());
         System.out.println("Agent:"+user);
         final String token = jwtTokenUtil.generateToken(userDetails);
-        System.out.println("ROLE: "+user.getRole());
-        AgentDto userDto = new AgentDto(user.getAgentID(), user.getUsername(), user.getIme(),user.getPrezime(), token, user.getRole());
+        //System.out.println("ROLE: "+user.getRole());
+        AgentDto userDto = new AgentDto(user.getAgentID(), user.getUsername(), user.getIme(),user.getPrezime(), token);
 
 
         return ResponseEntity.ok(userDto); 

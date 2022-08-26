@@ -48,9 +48,7 @@ public class Agent implements Entitet {
     @Column(name = "StrucnaSprema")
    // @NotBlank(message = "Strucna sprema je obavezna.")
     private String strucnaSprema;
-    @Column(name = "Role")
-    //@NotBlank(message = "Uloga je obavezna.")
-    private String Role;
+    
 /*
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

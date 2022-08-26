@@ -33,5 +33,5 @@ public class AgentDto implements Dto{
     String prezime;
     String token;
     //@NotBlank(message = "Uloga je obavezna.")
-    String role;
+   
 }
