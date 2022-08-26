@@ -43,11 +43,11 @@ public class PolisaService {
     @Transactional
     public boolean kreirajPolisu(PolisaDto p) {
         System.out.println("ZA CUVANJE POLISA: ");
-       // Polisa cuv = polisaMapper.toEntity(p);
-       // System.out.println("---------"+cuv);
-       // System.out.println("Stavke za cuvanje:---"+cuv.getStavkePolise());
-       // PolisaDto a1 = polisaMapper.toDto(polisaRepository.save(polisaMapper.toEntity(p)));
-       /* System.out.println("a1 polisaid:" + a1.getPolisaID());
+        // Polisa cuv = polisaMapper.toEntity(p);
+        // System.out.println("---------"+cuv);
+        // System.out.println("Stavke za cuvanje:---"+cuv.getStavkePolise());
+        // PolisaDto a1 = polisaMapper.toDto(polisaRepository.save(polisaMapper.toEntity(p)));
+        /* System.out.println("a1 polisaid:" + a1.getPolisaID());
         p.getStavke().forEach((e) -> {
             e.setPolisaID(a1.getPolisaID());
             System.out.println("E:" + e);
@@ -55,9 +55,9 @@ public class PolisaService {
             stavkaPoliseService.kreirajStavku(e);
         });*/
         //return a1;
-        
+
         polisaRepository.save(polisaMapper.toEntity(p));
-        
+
         return true;
     }
 
@@ -73,13 +73,13 @@ public class PolisaService {
 
     @Transactional
     public boolean obrisiPolisu(int id) throws Exception {
-        System.out.println("IDpolise:"+id);
-       // List<StavkaPolise> optionalStavke = stavkaPoliseService.findAllById(id);
-      //  if (optionalStavke != null) {
+        System.out.println("IDpolise:" + id);
+        // List<StavkaPolise> optionalStavke = stavkaPoliseService.findAllById(id);
+        //  if (optionalStavke != null) {
         //    System.out.println("BrStavki:"+optionalStavke.size());
-          //  stavkaPoliseService.obrisiStavke(id);
+        //  stavkaPoliseService.obrisiStavke(id);
 
-       // }
+        // }
         /*
         Optional<Polisa> optionalPolisa = polisaRepository.findById(id);
         if (!optionalPolisa.isPresent()) {
@@ -87,9 +87,17 @@ public class PolisaService {
         }*/
         System.out.println("BrisanjePOLISEEEEEEEE");
         //System.out.println("OpPolisa:"+optionalPolisa.get());
-       //polisaRepository.deleteByPolisaID(id);
-       
-       polisaRepository.deleteById(id);
+        //polisaRepository.deleteByPolisaID(id);
+
+        polisaRepository.deleteById(id);
         return true;
+    }
+
+    public Optional<PolisaDto> nadjiPolisu(int id) {
+        Optional<Polisa> entity = polisaRepository.findById(id);
+        if (entity.isPresent()) {
+            return Optional.of(polisaMapper.toDto(entity.get()));
+        }
+        return Optional.empty();
     }
 }

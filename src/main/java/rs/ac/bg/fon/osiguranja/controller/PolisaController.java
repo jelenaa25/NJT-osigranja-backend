@@ -6,6 +6,7 @@
 package rs.ac.bg.fon.osiguranja.controller;
 
 import java.util.List;
+import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,7 +39,14 @@ public class PolisaController {
     public PolisaController(PolisaService polisaService) {
         this.polisaService = polisaService;
     }
-    
+    @GetMapping("polisa/{id}")
+    public ResponseEntity<Object> nadjiPolisu(@PathVariable int id) { //vrati odredjeno pokrice
+        Optional<PolisaDto> entity = polisaService.nadjiPolisu(id);
+        if (entity.isPresent()) {
+            return ResponseEntity.ok(entity.get());
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nepostojeca polisa...");
+    }
     
     @PostMapping("/polisa") //dodaj valid kasnijeee
     public ResponseEntity<Object> kreirajPolisu(@RequestBody @Valid PolisaDto p) throws Exception{
