@@ -33,7 +33,7 @@ public class PredmetOsiguranja implements Entitet, Serializable {
     @Column(name = "PredmetID")
     private int predmetID;
     @Column(name = "Naziv")
-    //@NotBlank(message = "Naziv predmeta osiguranja je obavezan.")
+    @NotBlank(message = "Naziv predmeta osiguranja je obavezan.")
     private String naziv;
     @Column(name = "Napomena")
     private String napomena;

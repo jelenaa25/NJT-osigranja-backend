@@ -17,9 +17,9 @@ import lombok.ToString;
 @AllArgsConstructor
 public class JwtRequest implements Serializable {
     private static final long serialVersionUID = 5926468583005150707L;
-    //@NotBlank(message = "Username je obavezno.")
+    @NotBlank(message = "Username je obavezno.")
     private String username;
-   // @NotBlank(message = "Password je obavezan.")
+    @NotBlank(message = "Password je obavezan.")
     private String password;
 
    

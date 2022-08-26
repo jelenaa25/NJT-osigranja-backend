@@ -35,7 +35,7 @@ public class Pokrice implements Entitet, Serializable{
     @Column(name = "PokriceID")
     private int pokriceID;
     @Column(name = "Naziv")
-   // @NotBlank(message = "Naziv pokrica je obavezan.")
+    @NotBlank(message = "Naziv pokrica je obavezan.")
     private String naziv;
     @Column(name = "Napomena")
     private String napomena;

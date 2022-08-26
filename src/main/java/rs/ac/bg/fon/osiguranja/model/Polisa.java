@@ -59,13 +59,13 @@ public class Polisa implements Entitet, Serializable {
     
     
     @Column(name = "PovrsinaStana")
-    //@Min(value = 1, message = "Povrsina stana mora biti veca od nule")
+    @Min(value = 1, message = "Povrsina stana mora biti veca od nule")
     private BigDecimal povrsinaStana;
     @Column(name = "VrednostPoKvM")
-    //@Min(value = 1, message = "Vrednost po KvM mora biti veca od nule")
+    @Min(value = 1, message = "Vrednost po KvM mora biti veca od nule")
     private BigDecimal vrednostPoKvM;
     @Column(name = "GradjevinskaVrednost")
-    //@Min(value = 1, message = "Gradjevinska vrednost mora biti veca od nule")
+    @Min(value = 1, message = "Gradjevinska vrednost mora biti veca od nule")
     private BigDecimal gradjevinskaVrednost;
     @Column(name = "UkupnaPremija")
     private BigDecimal ukupnaPremija;
@@ -85,8 +85,8 @@ public class Polisa implements Entitet, Serializable {
     private Agent agentOsiguranja;
 
     @OneToMany(mappedBy = "polisa", cascade = CascadeType.ALL)
-    //@NotEmpty(message = "Polisa mora imati bar jednu stavku.")
-    //@NotNull(message = "Polisa mora imati bar jednu stavku.")
+    @NotEmpty(message = "Polisa mora imati bar jednu stavku.")
+    @NotNull(message = "Polisa mora imati bar jednu stavku.")
     private List<StavkaPolise> stavkePolise;
     
 }

@@ -40,7 +40,7 @@ public class Klijent implements Entitet, Serializable{
     @Column(name = "KlijentID")
     private int id;
     @Column(name = "ImePrezime")
-    //@NotBlank(message = "Ime i prezime su obavezni.")
+    @NotBlank(message = "Ime i prezime su obavezni.")
     private String imePrezime;
     @Column(name = "JMBG")
    
