@@ -9,9 +9,11 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import rs.ac.bg.fon.osiguranja.dto.PredmetOsiguranjaDto;
 import rs.ac.bg.fon.osiguranja.service.PredmetOsiguranjaService;
@@ -21,6 +23,9 @@ import rs.ac.bg.fon.osiguranja.service.PredmetOsiguranjaService;
  * @author Korisnik
  */
 @RestController
+@CrossOrigin(origins = "*",
+        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
+
 public class PredmetOsiguranjaController {
     
     private final PredmetOsiguranjaService predmetOsiguranjaService;
