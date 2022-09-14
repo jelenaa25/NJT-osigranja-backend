@@ -54,11 +54,11 @@ public class StavkaPolise implements Entitet, Serializable{
     @Column(name = "RB")
     private Integer rb;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PredmetID", referencedColumnName = "PredmetID")
+    @JoinColumn(name = "PredmetID", referencedColumnName = "ID")
     //@NotNull(message = "Predmet je obavezan.")
     private PredmetOsiguranja predmetOsiguranja;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PokriceID", referencedColumnName = "PokriceID")
+    @JoinColumn(name = "PokriceID", referencedColumnName = "ID")
     //@NotNull(message = "Pokrice je obavezno.")
     private Pokrice pokrice;
     @Column(name  = "SumaOsiguranja")

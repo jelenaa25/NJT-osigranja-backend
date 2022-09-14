@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.repository;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -17,4 +18,5 @@ import rs.ac.bg.fon.osiguranja.model.Polisa;
 @Repository
 public interface PolisaRepository extends JpaRepository<Polisa, Integer>{
     void deleteByPolisaID(int poli);
+    List<Polisa> findByKlijent_imePrezimeStartingWith(String kl);
 }

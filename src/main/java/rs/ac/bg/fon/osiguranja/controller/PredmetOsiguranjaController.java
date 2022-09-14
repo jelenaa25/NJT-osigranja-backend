@@ -25,7 +25,6 @@ import rs.ac.bg.fon.osiguranja.service.PredmetOsiguranjaService;
 @RestController
 @CrossOrigin(origins = "*",
         methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
-
 public class PredmetOsiguranjaController {
     
     private final PredmetOsiguranjaService predmetOsiguranjaService;

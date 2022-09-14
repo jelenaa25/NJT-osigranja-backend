@@ -41,4 +41,5 @@ public class PolisaDto implements Dto{
     @NotEmpty(message = "Polisa mora imati bar jednu stavku.")
     @NotNull(message = "Polisa mora imati bar jednu stavku.")
     private List<StavkaPoliseDto> stavke;
+    private String imePrezime;
 }

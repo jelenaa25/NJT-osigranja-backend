@@ -30,6 +30,7 @@ public class KlijentMapper implements GenericMapper<KlijentDto, Klijent>{
         mm = mestoRepository.findByNaziv(dto.getMesto());
         //k.setMesto(new Mesto(11000, "Beograd"));
         k.setMesto(mm);
+        k.setId(dto.getId());
         return k;
     }
 
@@ -39,6 +40,7 @@ public class KlijentMapper implements GenericMapper<KlijentDto, Klijent>{
         k.setJmbg(entity.getJmbg());
         k.setImePrezime(entity.getImePrezime());
         k.setMesto(entity.getMesto().getNaziv());
+        k.setId(entity.getId());
         return k;
     }
     

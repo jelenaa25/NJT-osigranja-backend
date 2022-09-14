@@ -21,7 +21,7 @@ public class PredmetOsiguranjaMapper implements GenericMapper<PredmetOsiguranjaD
         PredmetOsiguranja  p = new PredmetOsiguranja();
         p.setNapomena(dto.getNapomena());
         p.setNaziv(dto.getNaziv());
-        p.setPredmetID(dto.getPredmetID());
+        p.setPredmetID(dto.getSifra());
         return p;
     }
 
@@ -30,7 +30,7 @@ public class PredmetOsiguranjaMapper implements GenericMapper<PredmetOsiguranjaD
         PredmetOsiguranjaDto p = new PredmetOsiguranjaDto();
         p.setNapomena(entity.getNapomena());
         p.setNaziv(entity.getNaziv());
-        p.setPredmetID(entity.getPredmetID());
+        p.setSifra(entity.getPredmetID());
         return p;
     }
     

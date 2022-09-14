@@ -38,6 +38,7 @@ public class PolisaMapper implements GenericMapper<PolisaDto, Polisa>{
     @Override
     public Polisa toEntity(PolisaDto dto) {
         Polisa p = new Polisa();
+        
         p.setDatumDO(dto.getDatumDO());
         System.out.println("KL1: ");
         p.setKlijent(klijentRepository.findById(dto.getKlijent()).get());
@@ -81,6 +82,7 @@ public class PolisaMapper implements GenericMapper<PolisaDto, Polisa>{
             stavke.add(mm.toDto(a));
         }
         p.setStavke(stavke);
+        p.setImePrezime(entity.getKlijent().getImePrezime());
         return p;
     }
     

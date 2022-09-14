@@ -30,7 +30,7 @@ public class PredmetOsiguranja implements Entitet, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PredmetID")
+    @Column(name = "ID")
     private int predmetID;
     @Column(name = "Naziv")
     @NotBlank(message = "Naziv predmeta osiguranja je obavezan.")

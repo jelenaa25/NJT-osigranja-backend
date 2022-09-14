@@ -20,7 +20,7 @@ import rs.ac.bg.fon.osiguranja.repository.MestoRepository;
  */
 @RestController
 @CrossOrigin(origins = "*",
-        methods = {RequestMethod.GET})
+        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 public class MestoController {
     private final MestoRepository mestoRepository;
 

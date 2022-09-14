@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import rs.ac.bg.fon.osiguranja.dto.PolisaDto;
@@ -46,6 +47,12 @@ public class PolisaController {
             return ResponseEntity.ok(entity.get());
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nepostojeca polisa...");
+    }
+    
+    @GetMapping("polisa/spec/{kl}")
+    public List<PolisaDto> nadjiPolisuByKlijent(@PathVariable String kl) { //vrati odredjeno pokrice
+        List<PolisaDto> entity = polisaService.nadjiPoliseByKlijent(kl);
+        return entity;
     }
     
     @PostMapping("/polisa") //dodaj valid kasnijeee

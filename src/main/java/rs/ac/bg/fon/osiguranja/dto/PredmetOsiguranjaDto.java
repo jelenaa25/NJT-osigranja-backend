@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PredmetOsiguranjaDto implements Dto{
     
-    private int predmetID;
+    private int sifra;
     @NotBlank(message = "Naziv predmeta osiguranja je obavezan.")
     private String naziv;
     private String napomena;

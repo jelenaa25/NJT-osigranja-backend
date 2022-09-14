@@ -100,4 +100,12 @@ public class PolisaService {
         }
         return Optional.empty();
     }
+
+    public List<PolisaDto> nadjiPoliseByKlijent(String kl) {
+         List<Polisa> p = polisaRepository.findByKlijent_imePrezimeStartingWith(kl);
+        System.out.println("POLISE: " + p.size());
+        return p.stream().map((pp) -> {
+            return polisaMapper.toDto(pp);
+        }).collect(Collectors.toList());
+    }
 }

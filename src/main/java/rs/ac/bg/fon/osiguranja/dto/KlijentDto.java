@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class KlijentDto implements Dto{
-    
+    private int id;
     private long jmbg;
     @NotBlank(message = "Ime i prezime su obavezni.")
     private String imePrezime;

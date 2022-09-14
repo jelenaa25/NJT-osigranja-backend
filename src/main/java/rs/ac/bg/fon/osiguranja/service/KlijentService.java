@@ -6,6 +6,7 @@
 package rs.ac.bg.fon.osiguranja.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,6 +38,22 @@ public class KlijentService {
     public List<KlijentDto> vratiSveKlijente() {
         
         List<Klijent> p = klijentRepository.findAll();
+        return p.stream().map((pp) -> {
+            return klijentMapper.toDto(pp);
+        }).collect(Collectors.toList());
+    }
+
+    public Optional<KlijentDto> nadjiKlijenta(int id) {
+
+        Optional<Klijent> entity = klijentRepository.findById(id);
+        if (entity.isPresent()) {
+            return Optional.of(klijentMapper.toDto(entity.get()));
+        }
+        return Optional.empty();
+    }
+
+    public List<KlijentDto> nadjiKlByName(String kl) {
+         List<Klijent> p = klijentRepository.findByImePrezimeStartingWith(kl);
         return p.stream().map((pp) -> {
             return klijentMapper.toDto(pp);
         }).collect(Collectors.toList());

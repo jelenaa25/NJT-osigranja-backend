@@ -32,7 +32,7 @@ import lombok.ToString;
 public class Pokrice implements Entitet, Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PokriceID")
+    @Column(name = "ID")
     private int pokriceID;
     @Column(name = "Naziv")
     @NotBlank(message = "Naziv pokrica je obavezan.")

@@ -6,15 +6,18 @@
 package rs.ac.bg.fon.osiguranja.controller;
 
 import java.util.List;
+import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import rs.ac.bg.fon.osiguranja.dto.KlijentDto;
 import rs.ac.bg.fon.osiguranja.dto.PokriceDto;
@@ -48,5 +51,21 @@ public class KlijentController {
     public List<KlijentDto> vratiSveKlijente() throws Exception {
         return klijentService.vratiSveKlijente();
     }
+    
+    @GetMapping("/klijent/{id}")
+    public ResponseEntity<Object> vratiKlijenta(@PathVariable int id) throws Exception {
+        Optional<KlijentDto> entity = klijentService.nadjiKlijenta(id);
+        if (entity.isPresent()) {
+            return ResponseEntity.ok(entity.get());
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nepostojeci klijent...");
+    }
+ 
+    @GetMapping("klijent/spec/{kl}")
+    public List<KlijentDto> nadjiKlijentaByName(@PathVariable String kl) { //vrati odredjeno pokrice
+        List<KlijentDto> entity = klijentService.nadjiKlByName(kl);
+        return entity;
+    }
+    
     
 }

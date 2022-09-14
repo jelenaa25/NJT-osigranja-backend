@@ -5,6 +5,7 @@
  */
 package rs.ac.bg.fon.osiguranja.repository;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import rs.ac.bg.fon.osiguranja.model.Klijent;
@@ -15,5 +16,6 @@ import rs.ac.bg.fon.osiguranja.model.Klijent;
  */
 @Repository
 public interface KlijentRepository extends JpaRepository<Klijent, Integer>{
+    List<Klijent> findByImePrezimeStartingWith(String imePrezime);
     
 }

@@ -21,7 +21,7 @@ public class PokriceMapper implements GenericMapper<PokriceDto, Pokrice>{
         Pokrice p = new Pokrice();
         p.setNapomena(dto.getNapomena());
         p.setNaziv(dto.getNaziv());
-        p.setPokriceID(dto.getPokriceID());
+        p.setPokriceID(dto.getSifra());
         return p;
     }
 
@@ -30,7 +30,7 @@ public class PokriceMapper implements GenericMapper<PokriceDto, Pokrice>{
         PokriceDto p = new PokriceDto();
         p.setNapomena(entity.getNapomena());
         p.setNaziv(entity.getNaziv());
-        p.setPokriceID(entity.getPokriceID());
+        p.setSifra(entity.getPokriceID());
         return p;
     }
     
